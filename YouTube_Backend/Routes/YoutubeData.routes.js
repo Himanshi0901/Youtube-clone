@@ -1,10 +1,8 @@
-import { getData,postData } from "../Controller/YoutubeData.Controller.js"
+import { getData, postData } from "../Controller/YoutubeData.Controller.js";
 import { verifyToken } from "../Middleware/verifyToken.js";
-export function routes(app){
-    app.get('/',(req,res)=>{
-        getData(req,res)
-    })
-    app.post('/post',(req,res)=>{
-        postData(req,res)
-    });
+
+// Routes for YouTube data operations
+export function routes(app) {
+    app.get('/', getData);
+    app.post('/post', verifyToken, postData); // Protected route
 }
